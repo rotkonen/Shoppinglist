@@ -1,0 +1,64 @@
+h5{
+    font-family: 'Lato';
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color:black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.added-product-container{
+    overflow: scroll;
+    overflow-x: hidden;
+    max-height: 500px;
+    scrollbar-width: none; 
+}
+.single-item{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 8px 12px 50px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #fff;
+}
+.item-checkbox{
+    border-radius: 5px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+.product-name-container{
+    flex:1;
+    overflow: hidden;
+}
+.item-name{
+    flex:1;
+    font-size: 28px;
+    margin-left: 25px;
+}
+.editInput{
+    flex:1;
+    border:none;
+    background: #FFFFFF;
+    padding:10px;
+    font-size: 20px;
+}
+.delete-button, .edit-button, .save-button{
+    background-color: transparent;
+    color: #fff;
+    border-radius: 10px;
+    border-style: none;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 10px 12px;
+    margin-right: 10px;
+    font-size: 24px;
+    &:active{
+        transform: scale(1.1);
+    }
+}

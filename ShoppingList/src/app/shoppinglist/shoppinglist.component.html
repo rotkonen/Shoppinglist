@@ -1,0 +1,8 @@
+<div class="shopping-list-container">
+    <h2>Shoppinglist</h2>
+    <div class="create-new-item-container">
+        <input class="new-item-input" type="text" placeholder="Search for product..." [(ngModel)]="itemName">
+        <button type="submit" class="create-new-item-button" (click)="addItem()"><fa-icon [icon]="faPlus"></fa-icon></button>
+    </div>
+    <app-itemlist></app-itemlist>
+</div>

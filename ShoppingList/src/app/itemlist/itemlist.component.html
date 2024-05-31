@@ -1,0 +1,15 @@
+<h5>Products</h5>
+<div class="added-product-container">
+    <div class="single-item" *ngFor="let item of products; let i = index;">
+        <input type="checkbox" class="item-checkbox" [checked]="item.completed" (change)="toggleCompletion(i)">
+        <div class="product-name-container" *ngIf="!item.editing">
+            <p class="item-name" [ngClass]="{ completed: item.completed }">{{ item.content }}</p>
+        </div>
+        <button type="button" class="edit-button" *ngIf="!item.editing" (click)="enableEditing(i)"><fa-icon [icon]="faEdit"></fa-icon></button>
+        <div class="product-name-edit-container" *ngIf="item.editing">
+            <input type="text" class="editInput" [(ngModel)]="productEditText" (blur)="updateProductText(i)" (keyup.enter)="updateProductText(i)">
+            <button type="button" class="save-button" (click)="updateProductText(i)"><fa-icon [icon]="faFloppyDisk"></fa-icon></button>
+        </div>
+        <button type="button" class="delete-button" (click)="deleteItem(i)"><fa-icon [icon]="faTrash"></fa-icon></button>
+    </div>
+</div>

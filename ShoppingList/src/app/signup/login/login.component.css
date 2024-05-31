@@ -1,0 +1,106 @@
+.login-container{
+    min-height: 200px;
+    width: 100%;
+    max-width: 500px;
+    background-color: rgba(11, 15, 13, 0.582);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    border-radius: 12px;
+    color: #fff;
+    padding:60px;
+}
+h2{
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 7% 0 0 0;
+}
+.input-box input{
+    width: calc(100% - 40px);
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: 2px solid #fff;
+    border-radius: 40px;
+    font-size: 1rem;
+    padding-left: 20px;
+    color: #fff;
+}
+.input-box input::placeholder{
+    color: #fff;
+}
+.input-box fa-icon{
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.25rem;
+}
+.guest-container{
+   display: flex;
+   justify-content: space-between;
+   font-size: 1rem;
+   margin: 5% 0 0 3%;
+}
+.guest-container a{
+    text-decoration: none;
+    color: #fff;
+}
+.guest-container a:hover{
+    text-decoration: underline;
+}
+.btn{
+    width: 95%;
+    height: 45px;
+    max-width: 500px;
+    border:none;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 40px;
+    cursor: pointer;
+    margin: 3% auto;
+    font-weight: 600;
+}
+.switch-container{
+    font-size: 1rem;
+    text-align: center;
+    margin: 3% 0;
+}
+.switch-container a{
+    color: #fff;
+    text-decoration: none;
+}
+.switch-container a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.error-container{
+    font-size: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    margin: 3% 0;
+}
+@media screen and (max-width: 600px) {
+    .login-container {
+        padding: 20px; /* Adjusted padding for smaller screens */
+    }
+
+    h2 {
+        font-size: 2rem; /* Adjusted font size for smaller screens */
+    }
+
+    .input-box input,
+    .input-box fa-icon {
+        font-size: 0.875rem; /* Adjusted font size for smaller screens */
+    }
+
+    .btn {
+        font-size: 0.875rem; /* Adjusted font size for smaller screens */
+    }
+}

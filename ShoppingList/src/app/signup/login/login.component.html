@@ -1,0 +1,22 @@
+<div class="login-container">
+    <h2 *ngIf="!showSignup">Login</h2>
+    <h2 *ngIf="showSignup">Signup</h2>
+        <div class="input-box">
+            <input type="text" placeholder="Username" [(ngModel)]="username"><fa-icon [icon]="faUser"></fa-icon>
+        </div>
+        <div class="input-box">
+            <input type="password" placeholder="Password" [(ngModel)]="password"><fa-icon [icon]="faLock"></fa-icon>
+        </div>
+        <div class="input-box" *ngIf="showSignup">
+            <input type="password" placeholder="Confirm Password" [(ngModel)]="confirmPassword"><fa-icon [icon]="faLock"></fa-icon>
+        </div>
+        <div class="guest-container">
+            <a *ngIf="!showSignup" [routerLink]="'shopping-list'">Join as guest</a>
+        </div>
+        <div class="error-container" *ngIf="error" style="color: red;">{{ error }}</div>
+        <button class="btn" *ngIf="!showSignup" (click)="login()">Login</button>
+        <button class="btn" *ngIf="showSignup" (click)="signup()">Signup</button>
+    <div class="switch-container">
+        <a (click)="toggleForm()">{{ showSignup ? 'Switch to Login' : 'Switch to Signup' }}</a>
+    </div>
+</div>
