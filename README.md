@@ -10,5 +10,4 @@ Angular
 
 # Back-end
 
-MongoDB
-Express.js
+MongoDB, Express.js
