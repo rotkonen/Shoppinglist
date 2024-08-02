@@ -1,3 +1,6 @@
+.completed {
+    text-decoration: line-through;
+}
 h5{
     font-family: 'Lato';
     font-size: 28px;
