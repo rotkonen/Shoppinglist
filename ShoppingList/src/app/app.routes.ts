@@ -6,5 +6,6 @@ import { ItemlistComponent } from './itemlist/itemlist.component';
 export const routes: Routes = [
     { path: "", component:LoginComponent},
     { path: "shopping-list", component:ShoppinglistComponent},
-    { path: "item-list", component:ItemlistComponent}
+    { path: "item-list", component:ItemlistComponent},
+    { path: '**', redirectTo: '' }
 ];

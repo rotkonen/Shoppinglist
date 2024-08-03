@@ -3,17 +3,24 @@ const mongoose = require("mongoose");
 const { body, validationResult } = require('express-validator');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const cors = require('cors');
 const User = require("./userModel");
 require('dotenv').config();
 
 const authenticateJWT = require('./middleware/authenticateJWT');
 
 const MONGODB_URI = process.env.DATABASE_URL;
-const PORT = process.env.PORT || 3000;
-const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
+const PORT = process.env.PORT;
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const server = express();
 server.use(express.json());
+
+server.use(cors({
+    origin: 'http://localhost:4200', // URL of your Angular app
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+}));
 
 // Database connection
 mongoose.connect(MONGODB_URI)
@@ -31,6 +38,8 @@ server.post(
         // Validate username and password
         body('username').trim().isLength({ min: 3 }).withMessage('Username must be at least 3 characters long'),
         body('password').trim().isLength({ min: 6 }).withMessage('Password must be at least 6 characters long')
+        .matches(/[A-Z]/).withMessage('Password must contain at least one uppercase letter')
+        .matches(/[\W_]/).withMessage('Password must contain at least one special character')
     ],
     async (req, res) => {
         const errors = validationResult(req);
@@ -82,6 +91,8 @@ server.post(
         // Validate username and password
         body('username').trim().isLength({ min: 3 }).withMessage('Username must be at least 3 characters long'),
         body('password').trim().isLength({ min: 6 }).withMessage('Password must be at least 6 characters long')
+        .matches(/[A-Z]/).withMessage('Password must contain at least one uppercase letter')
+        .matches(/[\W_]/).withMessage('Password must contain at least one special character')
     ],
     async (req, res) => {
         const errors = validationResult(req);

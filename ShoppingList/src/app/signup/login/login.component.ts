@@ -16,34 +16,53 @@ import { faLock } from '@fortawesome/free-solid-svg-icons';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+
   faUser = faUser;
   faLock = faLock;
+  
   username: string = '';
   password: string = '';
   confirmPassword: string = '';
-  error: string = '';
+  error: string | null = null;
   showSignup: boolean = false;
 
   constructor(private userService: UserService, private router: Router) { }
 
-  login() {
-    const user = this.userService.getUser(this.username);
-    if (user && user.password === this.password) {
-      this.error = '';
-      console.log('Login successful');
-      this.router.navigate(['shopping-list']);
+
+  login(): void {
+    if (this.username && this.password) {
+      this.userService.login(this.username, this.password).subscribe(
+        (response: any) => {
+          console.log('Login successful', response);
+          this.userService.saveToken(response.token); // Save JWT token
+          this.error = null; // Clear any previous errors
+          this.router.navigate(['/shopping-list']);
+        },
+        (error) => {
+          console.error('Login failed', error);
+          this.error = 'Login failed. Please check your credentials.';
+        }
+      );
     } else {
-      this.error = 'Invalid username or password';
+      this.error = 'Username and password are required.';
     }
   }
 
-  signup() {
-    if (this.password === this.confirmPassword) {
-      this.userService.addUser(this.username, this.password);
-      console.log('User registered successfully');
-      this.login();
+  signup(): void {
+    if (this.username && this.password && this.password === this.confirmPassword) {
+      this.userService.signup(this.username, this.password).subscribe(
+        (response: any) => {
+          console.log('Signup successful', response);
+          this.userService.saveToken(response.token); // Save JWT token
+          this.error = null; // Clear any previous errors
+        },
+        (error) => {
+          console.error('Signup failed', error);
+          this.error = 'Signup failed. Please try again.';
+        }
+      );
     } else {
-      this.error = 'Passwords do not match';
+      this.error = 'Please ensure all fields are filled correctly and passwords match.';
     }
   }
 
