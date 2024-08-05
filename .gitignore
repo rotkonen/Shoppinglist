@@ -1,2 +1,5 @@
 node_modules/
+# Ignore the secrets
 .env
+# Ignore cache created with the Angular CLI.
+.angular/

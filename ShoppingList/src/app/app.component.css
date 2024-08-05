@@ -5,3 +5,19 @@
     width: 100%;
     min-height: 100%;
 }
+.header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    background-color: transparent;
+}
+  
+.header button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+}

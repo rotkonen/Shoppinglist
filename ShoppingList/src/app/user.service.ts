@@ -8,7 +8,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 export class UserService {
 
   private expressUrl = 'http://localhost:3000';
-  private token: string | null = null; // To store the JWT
+  private tokenKey = 'auth_token';
 
   constructor(private http: HttpClient) { }
 
@@ -24,24 +24,22 @@ export class UserService {
     return this.http.post(url, { username, password });
   }
 
-  isLoggedIn(): boolean {
-    const token = localStorage.getItem('token'); // Check if token exists
-    return !!token; // Return true if token exists
-  }
-
   // Save token after login
   saveToken(token: string): void {
-    this.token = token;
-    localStorage.setItem('jwt', token); // Save token to localStorage
+    localStorage.setItem(this.tokenKey, token);
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem(this.tokenKey);
   }
 
   logout(): void {
-    localStorage.removeItem('token'); // Remove token from local storage
+    localStorage.removeItem(this.tokenKey);
   }
 
   // Get token from localStorage
   getToken(): string | null {
-    return localStorage.getItem('jwt');
+    return localStorage.getItem(this.tokenKey);
   }
 
   // Make a request to a protected route
