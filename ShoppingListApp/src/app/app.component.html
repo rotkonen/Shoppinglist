@@ -1,5 +1,5 @@
 <div class="header">
-  <button (click)="onLogout()">Logout</button>
+  <button *ngIf="showLogoutButton" (click)="onLogout()">Log out</button>
 </div>
 <div class="main-content">
   <router-outlet></router-outlet>
