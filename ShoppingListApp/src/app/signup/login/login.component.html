@@ -14,8 +14,8 @@
             <a *ngIf="!showSignup" [routerLink]="'shopping-list'">Join as guest (In development)</a>
         </div>
         <div class="error-container" *ngIf="error" style="color: red;">{{ error }}</div>
-        <button class="btn" *ngIf="!showSignup" (click)="login()">Login</button>
-        <button class="btn" *ngIf="showSignup" (click)="signup()">Signup</button>
+        <button class="btn" *ngIf="!showSignup" (click)="login()">Log in</button>
+        <button class="btn" *ngIf="showSignup" (click)="signup()">Sign Up</button>
     <div class="switch-container">
         <a (click)="toggleForm()">{{ showSignup ? 'Switch to Login' : 'Switch to Signup' }}</a>
     </div>
