@@ -31,9 +31,14 @@ h2{
     font-size: 1rem;
     padding-left: 20px;
     color: #fff;
+    transition: border-color 0.3s ease;
 }
 .input-box input::placeholder{
     color: #fff;
+    transition: opacity 0.3s ease;
+}
+.input-box input:focus::placeholder{
+    opacity: 0; 
 }
 .input-box fa-icon{
     position: absolute;
@@ -41,6 +46,8 @@ h2{
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.25rem;
+    color: #fff;
+    pointer-events: none;
 }
 .guest-container{
    display: flex;
@@ -66,6 +73,20 @@ h2{
     cursor: pointer;
     margin: 3% auto;
     font-weight: 600;
+    background-color: #fff;
+    color: black;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.btn:hover {
+    background-color: #f0f0f0;
+}
+.btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.btn:focus {
+    outline: none;
 }
 .switch-container{
     font-size: 1rem;
@@ -75,10 +96,13 @@ h2{
 .switch-container a{
     color: #fff;
     text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 .switch-container a:hover{
     text-decoration: underline;
     cursor: pointer;
+    color: #666;
 }
 .error-container{
     font-size: 1rem;
@@ -88,19 +112,19 @@ h2{
 }
 @media screen and (max-width: 600px) {
     .login-container {
-        padding: 20px; /* Adjusted padding for smaller screens */
+        padding: 20px;
     }
 
     h2 {
-        font-size: 2rem; /* Adjusted font size for smaller screens */
+        font-size: 2rem;
     }
 
     .input-box input,
     .input-box fa-icon {
-        font-size: 0.875rem; /* Adjusted font size for smaller screens */
+        font-size: 0.875rem;
     }
 
     .btn {
-        font-size: 0.875rem; /* Adjusted font size for smaller screens */
+        font-size: 0.875rem;
     }
 }
