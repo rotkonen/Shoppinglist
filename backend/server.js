@@ -4,7 +4,8 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cors = require('cors');
-const User = require("./userModel");
+const User = require("./models/userModel");
+const Item = require("./models/itemModel");
 require('dotenv').config();
 
 const authenticateJWT = require('./middleware/authenticateJWT');
@@ -129,6 +130,30 @@ server.post(
 
 server.get('/protected-route', authenticateJWT, (req, res) => {
     res.json({ message: "This is a protected route", user: req.user });
+});
+
+// Get a specific item by name
+server.get('/items', authenticateJWT, async (req, res) => {
+    const { name } = req.query;  // Extract name from the query parameters
+
+    if (!name) {
+        return res.status(400).json({ message: "Item name is required" });
+    }
+
+    try {
+        // Find the item by name
+        const item = await Item.findOne({ name });
+
+        // Check if the item exists
+        if (!item) {
+            return res.status(404).json({ message: "Item not found" });
+        }
+
+        res.status(200).json(item);
+    } catch (error) {
+        console.error("Error fetching item:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
 });
 
 server.listen(PORT, () => {
