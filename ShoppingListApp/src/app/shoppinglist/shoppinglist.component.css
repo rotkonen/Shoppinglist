@@ -6,8 +6,10 @@
     border: 1px solid rgba(255, 255, 255, 0.125);
     border-radius: 12px;
     color: #fff;
-    padding:60px;
+    padding: 60px;
+    box-sizing: border-box; 
 }
+
 h2 {
     font-size: 2.5rem;
     text-transform: uppercase;
@@ -15,42 +17,80 @@ h2 {
     margin-bottom: 20px;
     text-align: center;
 }
-.create-new-item-container{
-    display:flex;
+
+.create-new-item-container {
+    display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     border-radius: 40px;
-    padding-left: 20px;
+    padding: 0; 
     margin-bottom: 25px;
     border: 2px solid #fff;
 }
-.create-new-item-container ::placeholder{
+
+.create-new-item-container ::placeholder {
     color: #fff;
 }
-.new-item-input{
-    flex: 1;
-    border:none;
+
+.new-item-input {
+    border: none;
     outline: none;
-    background:transparent;
-    padding:10px;
+    background: transparent;
+    padding: 10px;
     font-size: 1rem;
     cursor: text;
     color: #fff;
+    margin-right: 0; 
 }
-.create-new-item-button{
+
+.create-new-item-button {
     border: none;
     outline: none;
-    padding: 16px 50px;
-    background-color: transparent;
+    padding: 16px 40px; 
     background-color: #fff;
     color: black;
-    font-size: 1rem;
+    font-size: 1.1rem;
     cursor: pointer;
     border-radius: 40px;
-    &:active{
-        transform: scale(1.1);
-    }
+    margin-left: 0;
 }
-.create-new-item-button fa-icon{
-    font-size: 1.25rem;
+
+.create-new-item-button:active {
+    transform: scale(1.1);
+}
+
+.create-new-item-button fa-icon {
+    font-size: 1.25rem; 
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .shopping-list-container {
+        padding: 30px; 
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .create-new-item-container {
+        flex-direction: row;
+        padding: 0;
+        justify-content: flex-end;
+    }
+
+    .new-item-input {
+        padding: 8px;
+        font-size: 0.9rem;
+        margin-right: 0;
+    }
+
+    .create-new-item-button {
+        padding: 16px 40px;
+        font-size: 1.1rem;
+    }
+
+    .create-new-item-button fa-icon {
+        font-size: 1.25rem;
+    }
 }

@@ -1,14 +1,26 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const ShoppingListSchema = new mongoose.Schema({
-    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    items: [
-      {
-        itemId: { type: Schema.Types.ObjectId, ref: 'Item', required: true }
-      }
-    ]
-  });
-  
-  const ShoppingList = mongoose.model('ShoppingList', ShoppingListSchema);
+const shoppingListSchema = new mongoose.Schema({
+    item: {
+        type: String,
+        required: true,
+    },
+    quantity: {
+        type: Number,
+        required: true,
+        default: 1,
+    },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User', 
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+});
 
-  module.exports = ShoppingList;
+const ShoppingList = mongoose.model("ShoppingList", shoppingListSchema);
+
+module.exports = ShoppingList;

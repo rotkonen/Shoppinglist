@@ -18,10 +18,6 @@ const userSchema = new mongoose.Schema({
       type: Date,
       default: Date.now
     }
-    /*shoppingListId: { 
-      type: Schema.Types.ObjectId, 
-      ref: 'ShoppingList' 
-    }*/
   });
 
 const User = mongoose.model('User', userSchema);

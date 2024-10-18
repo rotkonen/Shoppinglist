@@ -1,7 +1,7 @@
 .login-container{
     min-height: 200px;
-    width: 100%;
-    max-width: 500px;
+    width: 90%;
+    max-width: 600px;
     background-color: rgba(11, 15, 13, 0.582);
     border: 1px solid rgba(255, 255, 255, 0.125);
     border-radius: 12px;
@@ -37,6 +37,9 @@ h2{
     color: #fff;
     transition: opacity 0.3s ease;
 }
+.input-box input:focus{
+    box-shadow: 0 0 0 1px;
+}
 .input-box input:focus::placeholder{
     opacity: 0; 
 }
@@ -49,18 +52,8 @@ h2{
     color: #fff;
     pointer-events: none;
 }
-.guest-container{
-   display: flex;
-   justify-content: space-between;
-   font-size: 1rem;
-   margin: 5% 0 0 3%;
-}
-.guest-container a{
-    text-decoration: none;
-    color: #fff;
-}
-.guest-container a:hover{
-    text-decoration: underline;
+.input-box input:focus + fa-icon {
+    display: none;
 }
 .btn{
     width: 95%;
@@ -71,7 +64,7 @@ h2{
     font-size: 1rem;
     border-radius: 40px;
     cursor: pointer;
-    margin: 3% auto;
+    margin: 7% auto;
     font-weight: 600;
     background-color: #fff;
     color: black;
@@ -91,7 +84,7 @@ h2{
 .switch-container{
     font-size: 1rem;
     text-align: center;
-    margin: 3% 0;
+    margin: 3% 0 0 0;
 }
 .switch-container a{
     color: #fff;
@@ -106,9 +99,9 @@ h2{
 }
 .error-container{
     font-size: 1rem;
-    text-align: center;
-    font-size: 1rem;
-    margin: 3% 0;
+    font-weight: bold;
+    text-align: left;
+    margin: 7% 0 0 0;
 }
 @media screen and (max-width: 600px) {
     .login-container {
@@ -118,7 +111,9 @@ h2{
     h2 {
         font-size: 2rem;
     }
-
+    .input-box {
+        margin: 5% 0;
+    }
     .input-box input,
     .input-box fa-icon {
         font-size: 0.875rem;

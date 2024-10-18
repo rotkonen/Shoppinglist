@@ -18,29 +18,4 @@ faTrash = faTrash;
 faEdit = faEdit;
 faFloppyDisk = faFloppyDisk;
 
-productEditText: string = "";
-  products: Array<any> = [];
-
-  constructor(private productService: ProductService){
-    this.products= this.productService.getItems();
-  }
-  deleteItem(index: number){
-    this.productService.deleteItem(index);
-  }
-  toggleCompletion(index: number){
-    this.productService.productComplete(index);
-  }
-  enableEditing(index: number){
-    this.products.forEach((product, i) => {
-      if (i !== index) {
-          product.editing = false;
-      }
-    });
-    this.products[index].editing = true;
-    this.productEditText = this.products[index].text;
-  }
-  updateProductText(index: number){
-    this.productService.editProduct(index, this.productEditText);
-    this.products[index].editing = false;
-  }
 }

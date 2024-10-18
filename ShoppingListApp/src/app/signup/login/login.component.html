@@ -10,9 +10,6 @@
         <div class="input-box" *ngIf="showSignup">
             <input type="password" placeholder="Confirm Password" [(ngModel)]="confirmPassword"><fa-icon [icon]="faLock"></fa-icon>
         </div>
-        <div class="guest-container">
-            <a *ngIf="!showSignup" [routerLink]="'shopping-list'">Join as guest (In development)</a>
-        </div>
         <div class="error-container" *ngIf="error" style="color: red;">{{ error }}</div>
         <button class="btn" *ngIf="!showSignup" (click)="login()">Log in</button>
         <button class="btn" *ngIf="showSignup" (click)="signup()">Sign Up</button>
