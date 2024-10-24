@@ -7,10 +7,10 @@ This project originated from my thesis, and I have been working on it continuous
 ## Features
 
 - User signup and login functionality. (working)
-- Add items to your shopping list. (currently under development)
-- Remove items from your shopping list. (currently under development)
+- Add items to your shopping list. (working)
+- Remove items from your shopping list. (working)
 - Edit existing items on your shopping list. (currently under development)
-- Mark items as picked up. (currently under development)
+- Mark items as picked up. (working/currently under development)
 - Responsive design implemented using Angular framework. (currently under development)
 
 # Technologies Used:
