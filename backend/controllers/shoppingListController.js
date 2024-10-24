@@ -98,4 +98,33 @@ const deleteItem = async (req, res) => {
     }
 };
 
-module.exports = { addItem, getItems, editItem, deleteItem };
+// Update the collected status of an item
+const updateCollectedStatus = async (req, res) => {
+    const { id } = req.params; 
+    const { collected } = req.body;
+    const userId = extractUserId(req); 
+
+    if (!userId) {
+        return res.status(401).json({ message: "Unauthorized" });
+    }
+
+    try {
+        
+        const updatedItem = await ShoppingList.findOneAndUpdate(
+            { _id: id, userId },  
+            { collected }, 
+            { new: true } 
+        );
+
+        if (!updatedItem) {
+            return res.status(404).json({ message: "Item not found" });
+        }
+
+        res.status(200).json({ message: "Collected status updated", updatedItem });
+    } catch (error) {
+        console.error("Error updating collected status:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
+
+module.exports = { addItem, getItems, editItem, deleteItem, updateCollectedStatus};

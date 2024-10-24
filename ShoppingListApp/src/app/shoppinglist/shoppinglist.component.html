@@ -1,8 +1,9 @@
 <div class="shopping-list-container">
     <h2>Shoppinglist</h2>
     <div class="create-new-item-container">
-        <input class="new-item-input" type="text" placeholder="Search for product..." [(ngModel)]="itemName">
-        <button type="submit" class="create-new-item-button" (click)="addItem()"><fa-icon [icon]="faPlus"></fa-icon></button>
+      <input class="new-item-input" type="text" [(ngModel)]="itemName" placeholder="Enter product name" required/>
+      <input class="quantity-input" type="number" [(ngModel)]="itemQuantity" placeholder="Pcs" min="1" required />
+      <button class="create-new-item-button" (click)="addItem()"><fa-icon [icon]="faPlus"></fa-icon></button>
     </div>
-    <app-itemlist></app-itemlist>
+    <app-itemlist #itemList></app-itemlist>
 </div>

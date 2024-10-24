@@ -1,29 +1,56 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  itemArray: { content: string, completed: boolean}[] = [
-    {content: "Jauheliha",completed: false},
-    {content: "Kurkku",completed: false},
-    {content: "Tomaatti",completed: false}
-    ];
-  addItem(itemText: string){
-    this.itemArray.push({content: itemText, completed: false});
+  private expressUrl = 'http://localhost:3000';
+  private tokenKey = 'auth_token';
+  public itemAdded$ = new Subject<void>();
+
+  constructor(private http: HttpClient) { }
+
+  // Create headers with JWT token
+  private createHeaders(): HttpHeaders {
+    const token = localStorage.getItem(this.tokenKey);
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json' 
+    });
   }
-  getItems(){
-    return this.itemArray;
+
+  // Get all items
+  getItems(): Observable<any> {
+    const headers = this.createHeaders();
+    return this.http.get(`${this.expressUrl}/items`, { headers });
   }
-  deleteItem(index: number){
-    this.itemArray.splice(index,1);
+
+  // Add a new item
+  addItem(item: string, quantity: number): Observable<any> {
+    const headers = this.createHeaders();
+    return this.http.post(`${this.expressUrl}/items`, { item, quantity }, { headers }).pipe(
+      tap(() => this.itemAdded$.next())
+    );
   }
-  productComplete(index: number){
-    this.itemArray[index].completed = !this.itemArray[index].completed
+
+  // Edit an item
+  editItem(id: string, item: string, quantity: number): Observable<any> {
+    const headers = this.createHeaders();
+    return this.http.put(`${this.expressUrl}/items/${id}`, { item, quantity }, { headers });
   }
-  editProduct(index: number, newProduct: string) {
-    if (newProduct.trim()) {
-      this.itemArray[index].content = newProduct;
-    }
+
+  // Delete an item
+  deleteItem(id: string): Observable<any> {
+    const headers = this.createHeaders();
+    return this.http.delete(`${this.expressUrl}/items/${id}`, { headers });
   }
+
+  // Update collected status of an item
+  updateCollectedStatus(id: string, collected: boolean): Observable<any> {
+  const headers = this.createHeaders();
+  return this.http.put(`${this.expressUrl}/items/${id}/collected`, { collected }, { headers });
+}
 }

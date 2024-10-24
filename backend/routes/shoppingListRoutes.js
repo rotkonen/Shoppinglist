@@ -1,6 +1,6 @@
 const express = require("express");
 const { body } = require("express-validator");
-const { addItem, getItems, editItem, deleteItem } = require("../controllers/shoppingListController");
+const { addItem, getItems, editItem, deleteItem, updateCollectedStatus } = require("../controllers/shoppingListController");
 
 const router = express.Router();
 
@@ -22,5 +22,8 @@ router.put("/items/:id", editItem);
 
 // Delete an item
 router.delete("/items/:id", deleteItem);
+
+// Route to update collected status
+router.put('/items/:id/collected', updateCollectedStatus);
 
 module.exports = router;

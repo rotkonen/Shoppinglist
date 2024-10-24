@@ -15,3 +15,31 @@
     </div>
 </div>
 -->
+
+<div class="product-container">
+    <h5>Products</h5>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td>
+            <input type="checkbox" class="checkbox" [checked]="item.collected" (change)="toggleCollected(item)"/>
+          </td>
+          <td [ngClass]="{ 'collected': item.collected }">{{ item.item }}</td>
+          <td class="quantity">{{ item.quantity }}</td>
+          <td class="button-group">
+            <button><fa-icon [icon]="faEdit"></fa-icon></button>
+            <button (click)="deleteItem(item)"><fa-icon [icon]="faTrash"></fa-icon></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+  

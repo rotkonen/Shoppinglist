@@ -10,6 +10,10 @@ const shoppingListSchema = new mongoose.Schema({
         required: true,
         default: 1,
     },
+    collected: {
+        type: Boolean,
+        default: false,
+    },
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
